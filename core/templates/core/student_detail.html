@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row min-vh-100">
+    <div class="col-12">
+        <section>
+            <div class="col-xl-12 col-lg-12 col-md-9 col-sm-12 col-12">
+                <div class="card mx-auto border-0 view-card" style="width: 90%;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h4 class="mt-2 card-tt" style="float: left; color: rgb(5, 65, 54); font-size: 32px;" >Student Details</h4>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-between align-items-center">
+                                <a href="{% url 'core:student-update' student.id %}" class="btn btn-outline-secondary m-2">
+                                    <i class="fa fa-pencil-alt mr-2"></i>Edit &nbsp;
+                                </a>
+                                <a href="{% url 'core:student-delete' student.id %}" class="btn btn-outline-danger">
+                                    <i class="fa fa-trash"></i>&nbsp; Delete
+                                </a>
+                            </div>
+                        </div>
+                        <hr>
+                        <h5 class="card-title">Personal Details</h5>
+                        <br>
+            
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label><i class="fa fa-user-alt mr-2"></i> Student Name</label>
+                                <p>{{ student.name }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-genderless"></i>  Gender</label>
+                                <p>{{ student.gender }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-birthday-cake mr-2"></i>  Date of Birth</label>
+                                <p>{{ student.dob }}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label><i class="fa fa-church mr-2"></i>Religion </label>
+                                <p>{{ student.religion}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-user-friends mr-2"></i>Guardian's Name</label>
+                                <p>{{ student.guardian }}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <h5 class="card-title">Contact Details</h5>
+                        <br>
+            
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label><i class="fa fa-envelope mr-2"></i>Email Address</label>
+                                <p>{{ student.email }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-phone mr-2"></i>Phone No</label>
+                                <p>{{ student.phoneno }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-map mr-2"></i>Address</label>
+                                <p>{{ student.address }}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label><i class="fa fa-map-pin mr-2"></i>City</label>
+                                <p>{{ student.city }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-mail-bulk mr-2"></i>Postal Code</label>
+                                <p>{{ student.postal_code }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-map-marked mr-2"></i>Country</label>
+                                <p>{{ student.country }}</p>
+                            </div>
+                        </div>
+                        <br>
+            
+                        <h5 class="card-title">Academic Details</h5>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label><i class="fa fa-band-aid mr-2"></i>ADM NO</label>
+                                <p>{{ student.admno }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-ad mr-2"></i>Date of Admission</label>
+                                <p>{{ student.dateofadmission }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-bullhorn mr-2"></i>Course</label>
+                                <p>{{ student.course }}</p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label><i class="fab fa-behance mr-2"></i>Department</label>
+                                <p>{{ student.department.name }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-tachometer-alt mr-2"></i>Session</label>
+                                <p>{{ student.session }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <label><i class="fa fa-feather-alt mr-2"></i>Section</label>
+                                <p>{{ student.section }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}

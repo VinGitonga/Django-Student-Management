@@ -1,0 +1,49 @@
+<header class="header">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+        <a href="{% url 'home' %}" class="logo d-flex align-items-center">
+            <i class="fa fa-graduation-cap fa-2x mr-2"></i>
+            <span>Gianna</span>
+        </a>
+
+        <nav class="navbar">
+            <ul>
+                {% if request.user.is_authenticated %}
+                    <li class="dropdown"><a href="#"><span>Departments</span><i class="fa fa-chevron-down ml-2"></i> </a>
+                        <ul>
+                            <li><a href="{% url 'core:dept-create' %}">Create New Department</a></li>
+                            <li><a href="{% url 'core:dept-list' %}">Department List</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#"><span>Courses</span><i class="fa fa-chevron-down ml-2"></i> </a>
+                        <ul>
+                            <li><a href="{% url 'core:course-create' %}">Create New Course</a></li>
+                            <li><a href="{% url 'core:course-list' %}">Course List</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#"><span>Students</span><i class="fa fa-chevron-down ml-2"></i> </a>
+                        <ul>
+                            <li><a href="{% url 'core:student-create' %}">Add New Student</a></li>
+                            <li><a href="{% url 'core:student-list' %}">View all students</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#"><span>{{ request.user.username }}</span><i class="fa fa-chevron-down ml-2"></i> </a>
+                        <ul>
+                            <li><a href="#">View My Profile</a></li>
+                            <li><a href="{% url 'logout' %}"><span>Logout</span></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                <li class="float-right">
+                    <a class="nav-link" href="{% url 'login' %}"><i class="fa fa-lock-open mr-2"></i> Login</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'register' %}"><i class="fa fa-user-cog mr-2"></i> Register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+{% if form.non_field_errors %}
+
+    {% for err in form.non_field_errors %}
+
+        <div class="message-holder">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert">
+                    <small><i class="fas fa-times"></i></small>
+                </button>
+                <i class="fas fa-check-circle mr-2"></i>
+                {{ err }}
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+
+<section>
+    <div class="container">
+        <div class="card border-0 mx-auto w-75">
+            <h4 class="card-header text-center">{{ title }}</h4>
+            <div class="card-body">
+                <form method="POST" role="form">
+                    {% csrf_token %}
+                    {% for hidden_field in form.hidden_fields %}
+                        {{ hidden_field.errors }}
+                        {{ hidden_field }}
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-form-label">{{ form.name.label }}</label>
+                                {% render_field form.name class="form-control" placeholder="Course Name" %}
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">{{ form.department.label }}</label>
+                                {% render_field form.department class="form-control" %}
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">{{ form.intake.label }}</label>
+                                {% render_field form.intake class="form-control" placeholder="Intake" type="number" %}
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Course {{ form.code.label }}</label>
+                                {% render_field form.code class="form-control" placeholder="Course Unique Code" %}
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary btn-common"><i class="fa fa-pen-fancy mr-2"></i> {{ saveBtn }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

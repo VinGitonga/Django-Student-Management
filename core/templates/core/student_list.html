@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section>
+    <div class="col-xl-12 col-lg-12 col-md-9 col-sm-12 col-12">
+        <div class="card mx-auto w-100 border-0">
+            <h4 class="card-header text-center">All Students</h4>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="text-uppercase card-text-table">
+                            <th>#</th>
+                            <th>Admno</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Course</th>
+                            <th>Session</th>
+                            <th>Date of Admission</th>
+                            <th>Email</th>
+                            <th>Phone No</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                           <tr>
+                               <th>{{ forloop.counter }}</th>
+                               <th>{{ student.admno }}</th>
+                               <th>{{ student.name }}</th>
+                               <th>{{ student.gender }}</th>
+                               <th>{{ student.course.name }}</th>
+                               <th>{{ student.session }}</th>
+                               <th>{{ student.dateofadmission }}</th>
+                               <th>{{ student.email }}</th>
+                               <th>{{ student.phoneno }}</th>
+                               <th>
+                                   <a href="{% url 'core:student-update' student.id %}" class="btn btn-sm btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                       <i class="fa fa-edit"></i>
+                                   </a>
+                                   <a href="{% url 'core:student-details' student.id %}" class="btn btn-sm btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="View Details">
+                                       <i class="fa fa-eye"></i>
+                                   </a>
+                                   <a href="{% url 'core:student-delete' student.id %}" class="btn btn-sm btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                       <i class="fa fa-trash"></i>
+                                   </a>
+                               </th>
+                           </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a href="{% url 'core:student-create' %}" class="float" data-bs-toggle="tooltip" data-bs-placement="top" title="Create New Student">
+        <i class="fa fa-plus my-float"></i>
+    </a>
+</section>
+
+{% endblock content %}

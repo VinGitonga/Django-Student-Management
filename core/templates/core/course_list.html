@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<section>
+    <div class="col-xl-12 col-lg-12 col-md-9 col-sm-12 col-12">
+        <div class="card mx-auto w-100 border-0">
+            <h4 class="card-header text-center">All Courses</h4>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-4">
+                    <form method="GET" novalidate>
+                        {% render_field form.name class="form-control" placeholder="Search by Course Name" %}
+                        {% render_field form.export_to_csv class="form-control" %}
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <!-- <input type="text" name="name" value="{{ request.GET.name }}"> -->
+                    </form>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="text-uppercase card-text-table">
+                            <th>#</th>
+                            <th>Course Name</th>
+                            <th>Department</th>
+                            <th>Intake</th>
+                            <th>Code</th>
+                            <th>Date Created</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for crs in courses %}
+                           <tr>
+                               <th>{{ forloop.counter }}</th>
+                               <th>{{ crs.name }}</th>
+                               <th>{{ crs.department.name }}</th>
+                               <th>{{ crs.intake }}</th>
+                               <th>{{ crs.code }}</th>
+                               <th>{{ crs.created }}</th>
+                               <th>
+                                   <a href="{% url 'core:course-update' crs.id %}" class="btn btn-sm btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                       <i class="fa fa-edit"></i>
+                                   </a>
+                                   <a href="{% url 'core:course-delete' crs.id %}" class="btn btn-sm btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                       <i class="fa fa-trash"></i>
+                                   </a>
+                               </th>
+                           </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

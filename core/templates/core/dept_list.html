@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section>
+    <div class="col-xl-12 col-lg-12 col-md-9 col-sm-12 col-12">
+        <div class="card mx-auto w-100 border-0">
+            <h4 class="card-header text-center">All Departments</h4>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="text-uppercase card-text-table">
+                            <th>#</th>
+                            <th>Department Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dept in depts %}
+                           <tr>
+                               <th>{{ forloop.counter }}</th>
+                               <th>{{ dept.name }}</th>
+                               <th>
+                                   <a href="{% url 'core:dept-update' dept.id %}" class="btn btn-sm btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                       <i class="fa fa-edit"></i>
+                                   </a>
+                                   <a href="{% url 'core:dept-delete' dept.id %}" class="btn btn-sm btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                       <i class="fa fa-trash"></i>
+                                   </a>
+                               </th>
+                           </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

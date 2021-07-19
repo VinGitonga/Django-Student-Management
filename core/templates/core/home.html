@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="home d-flex align-items-center">
+    <div class="container">
+        <div class="row mt-0">
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+                <h1>We offer modern techical skills for growing your career development.</h1>
+                <h2>We are a team of talented tutors who make your learning experience fun and exciting.</h2>
+                <div class="text-center text-lg-left">
+                    <a href="#" class="btn-get-started d-inline-flex align-content-center justify-content-center align-self-center">
+                        <span>Get Started</span>
+                        <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 home-img">
+                <img src="{% static 'misc/images/home-img.png' %}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

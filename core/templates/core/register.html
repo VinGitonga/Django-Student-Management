@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+{% if register_form.non_field_errors %}
+   {% for err in register_form.non_field_errors %}
+      <div class="message-holder">
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <button type="button" class="close" data-dismiss="alert">
+                  <small><i class="fas fa-times"></i></small>
+              </button>
+              <i class="fas fa-times mr-2"></i>
+              {{ err }}
+          </div>
+      </div>
+   {% endfor %}
+{% endif %}
+
+<section>
+    <div class="col-xl-12 col-lg-12 col-md-9 col-sm-9 col-12">
+        <div class="card mx-auto w-75 border-0">
+            <h2 class="card-header text-center"><i class="fa fa-user-cog"></i> Register</h2>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for hidden_field in register_form.hidden_fields %}
+                        {{ hidden_field.errors }}
+                        {{ hidden_field }}
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3">First Name</label>
+                                <div class="col-sm-9">
+                                    {% render_field register_form.first_name class="form-control" placeholder="Joe" %}
+                                    {% if register_form.first_name.errors %}
+                                    {% for err in register_form.first_name.errors %}
+                                        <p class="error-text">{{ err }}</p>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Last Name</label>
+                                <div class="col-sm-9">
+                                    {% render_field register_form.last_name class="form-control" placeholder="Doe" %}
+                                    {% if register_form.last_name.errors %}
+                                    {% for err in register_form.last_name.errors %}
+                                        <p class="error-text">{{ err }}</p>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Email address</label>
+                                <div class="col-sm-9">
+                                    {% render_field register_form.email class="form-control" placeholder="you@outlook.com" type="email" %}
+                                    {% if register_form.email.errors %}
+                                    {% for err in register_form.email.errors %}
+                                        <p class="error-text">{{ err }}</p>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Username</label>
+                                <div class="col-sm-9">
+                                    {% render_field register_form.username class="form-control" placeholder="Username" %}
+                                    {% if register_form.username.errors %}
+                                    {% for err in register_form.username.errors %}
+                                        <p class="error-text">{{ err }}</p>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Password</label>
+                                <div class="col-sm-9">
+                                    {% render_field register_form.password1 class="form-control" placeholder="Password" type="password" %}
+                                    {% if register_form.password1.errors %}
+                                    {% for err in register_form.password1.errors %}
+                                        <p class="error-text">{{ err }}</p>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3">Confirm Password</label>
+                                <div class="col-sm-9">
+                                    {% render_field register_form.password2 class="form-control" placeholder="Confirm Password" %}
+                                    {% if register_form.password2.errors %}
+                                    {% for err in register_form.password2.errors %}
+                                        <p class="error-text">{{ err }}</p>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-outline-primary btn-lg btn-common mt-3"><i class="fa fa-pencil-alt mr-2"></i>Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

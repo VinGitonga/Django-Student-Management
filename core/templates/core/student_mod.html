@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+
+{% block content %}
+
+{% if form.non_field_errors %}
+
+   {% for err in form.non_field_errors %}
+       <div class="message-holder">
+           <div class="alert alert-dismissible alert-danger fade show" role="alert">
+               <button type="button" class="close" data-dismiss="alert">
+                   <small><i class="fa fa-times"></i></small>
+               </button>
+               <i class="fas fa-times mr-2"></i>
+               {{ err }}
+           </div>
+       </div>
+   {% endfor %}
+
+{% endif %}
+
+
+<section>
+    <div class="col-xl-12 col-lg-12 col-md-9 col-sm-9 col-12">
+        <div class="card mx-auto w-100 border-0">
+            <h4 class="card-header text-center">{{ title }}</h4>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for hidden_field in form.hidden_fields %}
+                        {{ hidden_field.errors }}
+                        {{ hidden_field }}
+                    {% endfor %}
+                    <p class="card-description">Personal Details</p>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.admno.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.admno class="form-control" placeholder="5417" type="number" %}
+                                    {% if form.admno.errors %}
+                                       {% for err in form.admno.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.name.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.name class="form-control" placeholder="Jake Owens" %}
+                                    {% if form.name.errors %}
+                                       {% for err in form.name.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.gender.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.gender class="form-control" %}
+                                    {% if form.gender.errors %}
+                                       {% for err in form.gender.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Date of Birth</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.dob class="form-control" placeholder="1999-01-01" type="date" %}
+                                    {% if form.dob.errors %}
+                                       {% for err in form.dob.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.religion.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.religion class="form-control" %}
+                                    {% if form.religion.errors %}
+                                       {% for err in form.religion.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Guardian's Name</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.guardian class="form-control" placeholder="Guardians Name" %}
+                                    {% if form.guardian.errors %}
+                                       {% for err in form.guardian.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="card-description">Academic Details</p>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.course.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.course class="form-control" placeholder="Choose course ..." %}
+                                    {% if form.course.errors %}
+                                       {% for err in form.course.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.session.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.session class="form-control" %}
+                                    {% if form.session.errors %}
+                                       {% for err in form.session.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.section.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.section class="form-control" %}
+                                    {% if form.section.errors %}
+                                       {% for err in form.section.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="card-description">Contact Details</p>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.email.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.email class="form-control" placeholder="you@outlook.com" %}
+                                    {% if form.email.errors %}
+                                       {% for err in form.email.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.phoneno.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.phoneno class="form-control" placeholder="245889334" %}
+                                    {% if form.phoneno.errors %}
+                                       {% for err in form.phoneno.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.address.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.address class="form-control" placeholder="Witas, Nakuru" %}
+                                    {% if form.address.errors %}
+                                       {% for err in form.address.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">{{ form.city.label }}</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.city class="form-control" placeholder="Nakuru" %}
+                                    {% if form.city.errors %}
+                                       {% for err in form.city.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Postal Code</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.postal_code class="form-control" placeholder="151-20100" %}
+                                    {% if form.postal_code.errors %}
+                                       {% for err in form.postal_code.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Country</label>
+                                <div class="col-sm-9">
+                                    {% render_field form.country class="form-control" placeholder="Kenya" %}
+                                    {% if form.country.errors %}
+                                       {% for err in form.country.errors %}
+                                          <p class="error-text">{{ err }}</p>
+                                       {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-primary btn-common mt-2" type="submit"><i class="fa fa-pen-fancy mr-2"></i> {{ saveBtn }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

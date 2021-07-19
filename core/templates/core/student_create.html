@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+
+<!-- {% block content %}
+
+{% if form.non_field_errors %}
+
+   {% for err in form.non_field_errors %}
+       <div class="message-holder">
+           <div class="alert alert-dismissible alert-danger fade show" role="alert">
+               <button type="button" class="close" data-dismiss="alert">
+                   <small><i class="fa fa-times"></i></small>
+               </button>
+               <i class="fas fa-times mr-2"></i>
+               {{ err }}
+           </div>
+       </div>
+   {% endfor %}
+
+{% endif %} -->
+
+
+<section class="mx-auto mb-3">
+    <div class="text-center mt-2 text-uppercase">
+        <h2>{{ title }}</h2>
+    </div>
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Add details of the student</h4>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% for hidden_field in form.hidden_fields %}
+                            {{ hidden_field.errors }}
+                            {{ hidden_field }}
+                        {% endfor %}
+                        {% for field in form %}
+                           <div class="form-group">
+                               {{ field.errors }} {{ field.label_tag }} {{ field }}
+                           </div>
+                        {% endfor %}
+                        <!-- <p class="card-description">Personal Details</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.admno.label }}</label>
+                                    <div class="col-sm-9">
+                                        {% render_field form.session class="form-control" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.name.label }}</label>
+                                    <div class="col-sm-9">
+                                        {{ form.name }} hi
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.gender.label }}</label>
+                                    <div class="col-sm-9">
+                                        {{ form.gender }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Date of Birth</label>
+                                    <div class="col-sm-9">
+                                        {{ form.dob }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.religion.label }}</label>
+                                    <div class="col-sm-9">
+                                        {{ form.religion }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Guardian's Name</label>
+                                    <div class="col-sm-9">
+                                        {{ form.guardian }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="card-description">Academic Details</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.course.label }}</label>
+                                    <div class="col-sm-9">
+                                        {{ form.course }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.session.label }}</label>
+                                    <div class="col-sm-9">
+                                        {{ form.session }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.section.label }}</label>
+                                    <div class="col-sm-9">
+                                        {{ form.section }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="card-description">Contact Details</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.email.label }}</label>
+                                    <div class="col-sm-9">
+                                        {{ form.email }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.phoneno.label }}</label>
+                                    <div class="col-sm-9">
+                                        {{ form.phoneno }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.address.label }}</label>
+                                    <div class="col-sm-9">
+                                       {{ form.address }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">{{ form.city.label }}</label>
+                                    <div class="col-sm-9">
+                                        {{ form.city }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Postal Code</label>
+                                    <div class="col-sm-9">
+                                        {{ form.postal_code }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Country</label>
+                                    <div class="col-sm-9">
+                                        {{ form.country }}
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <button class="btn btn-outline-primary" type="submit">{{ saveBtn }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

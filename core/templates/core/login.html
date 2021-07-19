@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+{% if form.non_field_errors %}
+   {% for err in form.non_field_errors %}
+   <div class="message-holder">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <small><i class="fas fa-times"></i></small>
+            </button>
+            <i class="fas fa-check-circle mr-2"></i>
+            {{ err }}
+        </div>
+    </div>
+   {% endfor %}
+{% endif %}
+
+<div class="row h-auto">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12 mt-3 text-center text-uppercase">
+                <h2><i class="fa fa-lock-open"></i> Login</h2>
+            </div>
+        </div>
+        <section class="row">
+            <div class="col-lg-4 col-md-6 col-sm-8 mx-auto bg-white py-3 mb-4">
+                <div class="row">
+                    <div class="col-12">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label>{{ form.username.label }}</label>
+                                {% render_field form.username class="form-control" %}
+                            </div>
+                            <div class="form-group">
+                                <label>{{ form.password.label }}</label>
+                                {% render_field form.password class="form-control" %}
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-outline-primary btn-common"><i class="fa fa-sign-in-alt mr-2"></i>Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{% endblock content %}

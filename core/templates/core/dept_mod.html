@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+{% if form.non_field_errors %}
+
+    {% for err in form.non_field_errors %}
+
+        <div class="message-holder">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert">
+                    <small><i class="fas fa-times"></i></small>
+                </button>
+                <i class="fas fa-check-circle mr-2"></i>
+                {{ err }}
+            </div>
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+
+<section class="dept-form">
+    <div class="container">
+        <div class="card border-0 mx-auto w-75">
+            <h4 class="card-header text-center form-title">{{ title }}</h4>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for hidden_field in form.hidden_fields %}
+                        {{ hidden_field.errors }}
+                        {{ hidden_field }}
+                    {% endfor %}
+                    <div class="form-group">
+                        <label>Department {{ form.name.label }}</label>
+                        {% render_field form.name class="form-control" placeholder="Mathematics" %}
+                        {% if form.name.errors %}
+                                {% for err in form.name.errors %}
+                                    <p class="error-text pb-2">{{ err }}</p>
+                                {% endfor %}
+                            {% endif %}
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-primary btn-common"><i class="fa fa-pen-fancy mr-2"></i>{{ saveBtn }} </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+{% endblock content %}

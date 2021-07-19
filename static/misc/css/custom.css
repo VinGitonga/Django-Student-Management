@@ -1,0 +1,370 @@
+.header {
+    transition: all .5s;
+    z-index: 997;
+    padding: 20px 0;
+}
+
+.header .logo{
+    line-height: 0;
+}
+
+.header .logo span{
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #012970;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 3px;
+}
+
+/* Navigation menu */
+.navbar {
+    padding: 0;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 10px 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #013289;
+    white-space: nowrap;
+    transition: .3s;
+}
+
+.navbar a i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+}
+
+.navbar a:hover, .navbar .active, .navbar li:hover > a{
+    color: #4154f1;
+}
+
+/* Navbar dropdown */
+.navbar .dropdown ul {
+    display: block;
+    position: absolute;
+    left: 14px;
+    top: calc(100% + 30px);
+    margin: 0;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, .25);
+    transition: .3s;
+    border-radius: 4px;
+}
+
+.navbar .dropdown ul li {
+    min-width: 200px;
+}
+
+.navbar .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    font-weight: 600;
+}
+
+.navbar .dropdown ul a i {
+    font-size: 12px;
+}
+
+.navbar .dropdown ul a:hover, .navbar .dropdown ul li:hover > a{
+    color: #4154f1;
+}
+
+.navbar .dropdown:hover > ul{
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+}
+
+
+
+/* Home */
+
+.home {
+    width: 100%;
+    height: 95vh;
+    background: url(../images/home.png) top center no-repeat;
+    background-size: cover;
+}
+
+.home h1 {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 700;
+    color: #012970;
+}
+
+.home h2 {
+    color: #444444;
+    margin: 15px 0 0 0;
+    font-size: 26px;
+}
+
+.home .btn-get-started {
+    margin-top: 30px;
+    line-height: 0;
+    padding: 15px 40px;
+    border-radius: 4px;
+    transition: .5s;
+    color: #fff;
+    background: #4154f1;
+    box-shadow: 0px 5px 30px rgba(65, 84, 241, .4);
+}
+
+.home .btn-get-started span {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.home .btn-get-started i {
+    margin-left: 5px;
+    font-size: 18px;
+    transition: .3s;
+}
+
+
+.home .btn-get-started:hover i {
+    transform: translateX(5px);
+}
+
+.home .home-img {
+    text-align: right;
+}
+
+@media (min-width: 1024px){
+    .home {
+        background-attachment: fixed;
+        height: auto !important;
+    }
+}
+
+@media (max-width: 991px){
+    .home {
+        height: auto;
+        padding: 120px 0 60px 0;
+    }
+
+    .home .home-img{
+        text-align: center;
+        margin-top: 80px;
+    }
+
+    .home .home-img img {
+        width: 80%;
+    }
+}
+
+@media (max_width: 768px){
+    .home {
+        text-align: center;
+    }
+
+    .home h1 {
+        font-size: 32px;
+    }
+
+    .home h2{
+        font-size: 24px;
+    }
+
+    .home .home-img img {
+        width: 100%;
+    }
+}
+
+/* Forms */
+
+.form-title {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.form-title h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+    color: #5c768d;
+}
+
+.error-text {
+    color: #b43a63;
+    font-size: small;
+    font-style: italic;
+}
+
+.simple-form-container{
+    margin: auto;
+}
+
+
+
+/* Sections styling */
+
+section {
+    margin: 0%;
+}
+
+.msg-prc{
+    margin: 5%;
+}
+
+/* Messages */
+.message-holder {
+    width: 400px;
+    max-width: calc(100vw - 2rem);
+    z-index: 1080;
+}
+
+.message-holder .alert {
+    box-shadow: #707070 1px 2px 5px;
+}
+
+/* Card Description */
+.card-description {
+    color: #3a0718;
+    font-weight: 600;
+}
+
+.card-text-table{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #3a0718 !important;
+}
+
+/* Grids */
+.grid-margin {
+    margin-bottom: 1.5rem;
+}
+
+.view-card {
+    width: 1300px;
+    margin: 0 auto;
+    margin-bottom: 110px;
+    border-radius: 0px;
+}
+
+.view-card .card-body{
+    text-align: center;
+}
+
+.view-card .card-tt {
+    font-size: 32px;
+    font-weight: 600;
+    color: #210d4e;
+}
+
+
+.view-card p {
+    margin-top: -10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.view-card label{
+    font-weight: 600;
+    font-size: 14px;
+    color: #210d4e;
+}
+
+.view-card a.btn.btn-outline-danger,
+.view-card a.btn.btn-outline-secondary{
+    width: 140px;
+    height: 45px;
+    padding-top: 13px;
+}
+
+
+/* Float Button */
+
+.float {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    bottom: 40px;
+    right: 50px;
+    background-color: #7cbb00;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 50px #999;
+}
+
+.float:hover,
+.float:focus,
+.float:active{
+    color: #fff;
+    background: #88cc00;
+}
+
+.my-float {
+    margin-top: 28px;
+}
+
+.btn-common {
+    border-radius: 32px;
+}
+
+.search-form {
+    font-size: 15px;
+}
+
+.search-form form {
+    margin-top: 30px;
+    background: #fff;
+    padding: 6px 10px;
+    position: relative;
+    border-radius: 50px;
+    text-align: left;
+    border: 1px solid #bfdcf7;
+}
+
+.search-form form input[type="text"]{
+    border: 0;
+    padding: 4px 8px;
+    width: calc(100% - 100px);
+}
+
+.search-form form button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: 0;
+    background: #1977cc;
+    font-size: 16px;
+    padding: 0 20px;
+    color: #fff;
+    transition: .3s;
+    border-radius: 50px;
+}
+
+.search-form form button:hover{
+    background: #1c84e3;
+}
